@@ -1,4 +1,6 @@
-fn find_digits(_value: Vec<&str>) -> Vec<i32> {
+use std::fs;
+
+fn find_digits(_value: Vec<String>) -> Vec<i32> {
     let mut _final_value: Vec<i32> = Vec::new();
     for (_index, _item) in _value.iter().enumerate() {
         let combined: i32 = _item
@@ -30,8 +32,12 @@ fn sum_of_digits(_digits: Vec<i32>) -> i32{
 }
 
 pub fn main() {
-    let _calibration_value: Vec<&str> = vec!["1abc2", "pqr3stu8vwx", "a1b2c3d4e5f", "treb7uchet"];
+    let mut _calibration_value: Vec<String> = Vec::new();
+    let input_file = "src/one_solution/input";
+    if let Ok(file_content) = fs::read_to_string(input_file) {
+        _calibration_value = file_content.lines().map(String::from).collect();
+    }
     let _digits = find_digits(_calibration_value);
-    let _sum = sum_of_digits(_digits);
-    println!("{}", _sum);
+    let _digits_sums = sum_of_digits(_digits);
+    println!("Sum of all of the calibration values is: {}", _digits_sums);
 }
