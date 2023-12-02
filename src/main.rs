@@ -1,5 +1,5 @@
-mod one;
+mod one_solution;
 
 fn main(){
-    one::main();
+    one_solution::main();
 }
