@@ -10,22 +10,26 @@ pub fn main() {
     for _i in 0.._values.len() {
         let mut chars = _values[_i].chars().peekable();
         while let Some(_j) = chars.next() {
-            if _j.is_ascii_punctuation() && _j != '.' {
-                let _sym = _j;
+            if _j.is_ascii_punctuation() {
                 let mut _number = String::new();
+                let mut _start = _j;
                 while let Some(_next_char) = chars.peek() {
-                    if _next_char.is_digit(10) && _next_char != &'.' {
+                    if _next_char.is_digit(10) {
                         _number.push(*_next_char);
                         chars.next();
                     } else {
+                        let _end = *_next_char;
+                        if _start == '.' && _end == '.' {
+                            _number.clear();
+                        }
                         break;
                     }
                 }
                 if !_number.is_empty() {
                     _numbers_vector.push(_number.clone());
-                    print!("{:?} ", _number);
                 }
             }
         }
     }
+    println!("{:?}", _numbers_vector);
 }
