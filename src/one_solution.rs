@@ -33,7 +33,7 @@ fn sum_of_digits(_digits: Vec<i32>) -> i32{
 
 pub fn main() {
     let mut _calibration_value: Vec<String> = Vec::new();
-    let input_file = "src/one_solution/input";
+    let input_file = "src/one_values/input";
     if let Ok(file_content) = fs::read_to_string(input_file) {
         _calibration_value = file_content.lines().map(String::from).collect();
     }
