@@ -52,31 +52,32 @@ fn find_all_number(_values: Vec<String>) -> Vec<String>{
     }
     _all_numbers
 }
-fn find_diagonal(_numbers: Vec<String>, _values: Vec<String>) -> Vec<String> {
-    let mut _numbers_diagonal_to = Vec::new();
+const DISTANCE_THRESHOLD: usize = 140;
 
-    for _number in &_numbers {
-        for _value_string in &_values {
-            if let Some(start) = _value_string.find(_number) {
-                let end = start + _value_string.len();
+fn find_diagonal(target_numbers: Vec<String>, input_strings: Vec<String>) -> Vec<String> {
+    let symbols: [&str; 8] = ["+", "-", "/", "=", "%", "@", "$", "*"];
+    let numbers_diagonal_to = Vec::new();
 
-                if let Some(char_at_140) = _value_string.chars().nth(start + 140) {
-                    if char_at_140.is_ascii_punctuation() && char_at_140 != '.' {
-                        _numbers_diagonal_to.push(_number.clone());
+    for number in target_numbers {
+        for symbol in &symbols {
+            for value_string in &input_strings {
+                if let Some(start) = value_string.find(&number){
+                     let _start = start + 1;
+                    if let Some(next_symbol) = value_string.find(symbol) {
+                        let _distance = next_symbol - _start;
+                        println!("{}", _start);
+                        println!("{}", next_symbol);
+                        println!("{}", _distance);
                     }
                 }
 
-                if let Some(char_at_140_plus_len) = _value_string.chars().nth(end + 140) {
-                    if char_at_140_plus_len.is_ascii_punctuation() && char_at_140_plus_len != '.' {
-                        _numbers_diagonal_to.push(_number.clone());
-                    }
-                }
             }
         }
     }
 
-    _numbers_diagonal_to
+    numbers_diagonal_to
 }
+
 
 fn sum_of_vec(_vector: Vec<String>) -> i32{
     let mut _num_vector = Vec::new();
@@ -99,7 +100,7 @@ pub fn main() {
 
     let _all_numbers = find_all_number(_values.clone());
     let _num_with_diagonal_symbol = find_diagonal(_all_numbers, _values.clone());
-    println!("{:?}", _num_with_diagonal_symbol);
-    //let _sum_diagonal = sum_of_vec(_num_with_diagonal_symbol);
     //println!("{:?}", _num_with_diagonal_symbol);
+    //let _sum_diagonal = sum_of_vec(_num_with_diagonal_symbol);
+    println!("{:?}", _num_with_diagonal_symbol);
 }

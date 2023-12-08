@@ -6,6 +6,6 @@ mod three_solution;
 
 fn main(){
     //one_solution::main();
-    //two_solution::main();
-    three_solution::main();
+    two_solution::main();
+    //three_solution::main();
 }
