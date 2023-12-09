@@ -45,15 +45,13 @@ pub fn main() {
             if let Some(_last) = sorted_vec.last(){
                 let _new_num = format!("{}{}", _first.0, _last.0);
                 if !_new_num.is_empty(){
-                    println!("{}", _new_num);
                     _vec_to_sum.push(_new_num.parse::<i32>().unwrap());
                 }
             }
         }
     }
     let _sum = sum_vec(_vec_to_sum.clone());
-
-    println!("{}", _sum);
+    println!("SUM = {}", _sum);
 }
 
 
