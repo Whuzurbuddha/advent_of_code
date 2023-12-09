@@ -1,11 +1,13 @@
 #![allow(dead_code)]
 #![allow(non_snake_case)]
-mod one_solution;
-mod two_solution;
-mod three_solution;
+mod day1_solution_one;
+mod day1_solution_two;
+mod day2_solution_one;
+mod four_solution;
 
 fn main(){
-    //one_solution::main();
-    two_solution::main();
+    //day1_solution_one::main();
+    //day1_solution_two::main();
+    day2_solution_one::main();
     //three_solution::main();
 }
