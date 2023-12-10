@@ -11,12 +11,13 @@ pub fn main() {
     let input_file = "src/day2_solution_one_values/input";
     let values = puzzle_input(input_file);
 
-    let mut possible_games: Vec<String> = Vec::new();
 
+    let mut possible_games: Vec<Vec<String>> = Vec::new();
     for game_unfiltered in &values {
         let filtered_game = game_unfiltered.split(":").collect::<Vec<_>>()[1];
         let played_rounds: Vec<_> = filtered_game.split(";").collect();
 
+        let mut _possible_round = Vec::new();
         for played_games in played_rounds.iter() {
             let is_possible = played_games.split(',')
                 .all(|round| {
@@ -31,11 +32,17 @@ pub fn main() {
                         _ => false,
                     }
                 });
-
             if is_possible {
-                possible_games.push("POSSIBLE GAME".to_string());
+                _possible_round.push("POSSIBLE".to_string());
+            }else{
+                _possible_round.push("IMPOSSIBLE".to_string());
             }
         }
+        if _possible_round.iter().find(|&x| x == "IMPOSSIBLE").is_some() {
+            _possible_round.clear();
+        }else{
+            possible_games.push(_possible_round);
+        }
     }
-    println!("{}", possible_games.iter().count());
+    println!("{:?}", possible_games.iter().count());
 }
