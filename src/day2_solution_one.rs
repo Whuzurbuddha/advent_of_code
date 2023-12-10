@@ -46,9 +46,7 @@ pub fn main() {
                 _possible_round.push("IMPOSSIBLE".to_string());
             }
         }
-        if _possible_round.iter().find(|&x| x == "IMPOSSIBLE").is_some() {
-            _possible_round.clear();
-        }else{
+        if _possible_round.iter().find(|&x| x == "IMPOSSIBLE").is_none() {
             possible_games.push(_ID);
         }
     }
