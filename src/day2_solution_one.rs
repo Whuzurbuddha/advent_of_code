@@ -7,7 +7,7 @@ fn puzzle_input(input_file: &str) -> Vec<String> {
     Vec::new()
 }
 fn sum(_IDS: Vec<&str>) -> i32{
-    let mut _digits_vec: Vec<i32> = Vec::new();
+    let _digits_vec: Vec<i32> = Vec::new();
     let mut _sum = 0;
     for _items in _IDS.iter().enumerate(){
         _sum += _items.1.split_whitespace().collect::<Vec<_>>()[1].parse::<i32>().unwrap_or_default();
