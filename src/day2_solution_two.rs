@@ -8,7 +8,7 @@ fn puzzle_input(input_file: &str) -> Vec<String> {
 }
 
 pub fn main() {
-    let input_file = "src/day2_solution_one_values/input";
+    let input_file = "src/day2_values/input";
     let values = puzzle_input(input_file);
 
     let mut _color_products = Vec::new();
